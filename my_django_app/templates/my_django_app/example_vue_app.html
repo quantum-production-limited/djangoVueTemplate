@@ -6,10 +6,10 @@
 </head>
 <body>
 {% load static %}
-    <link rel="stylesheet" href="{% static 'example_vue_app/css/app.css' %}">
-    <div id="example_vue_app_container"></div>
-    {{ example_vue_app_props|json_script:"example_vue_app_props" }}
-    <script src="{% static 'example_vue_app/js/app.js' %}"></script>
-    <script src="{% static 'example_vue_app/js/chunk-vendors.js' %}"></script>
+<link rel="stylesheet" href="{% static 'example_vue_app/css/app.css' %}">
+<div id="example_vue_app_container"></div>
+{{ example_vue_app_props|json_script:"example_vue_app_props" }}
+<script src="{% static 'example_vue_app/js/app.js' %}"></script>
+<script src="{% static 'example_vue_app/js/chunk-vendors.js' %}"></script>
 </body>
 </html>
