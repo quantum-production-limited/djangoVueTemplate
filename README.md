@@ -2,6 +2,11 @@
 
 This is an example project showing how a Vue application can be integrated into Django.
 
+You'll need:
+- Python: 39.16
+- Node: v19.6.0
+- NPM: 9.4.0
+
 ## Installation
 
 In the Django project root directory: `pip install -r requirements.txt`
