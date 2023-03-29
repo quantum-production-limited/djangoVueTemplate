@@ -3,7 +3,7 @@
 This is an example project showing how a Vue application can be integrated into Django.
 
 You'll need:
-- Python: 39.16
+- Python: 3.9.16
 - Node: v19.6.0
 - NPM: 9.4.0
 
