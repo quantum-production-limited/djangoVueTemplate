@@ -39,6 +39,9 @@ export default {
 </script>
 
 <style scoped>
+body {
+  margin: 0px !important;
+}
 #app-container {
   display: flex;
   flex-direction: column;

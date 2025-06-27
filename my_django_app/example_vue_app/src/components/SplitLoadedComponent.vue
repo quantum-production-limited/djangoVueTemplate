@@ -12,6 +12,7 @@ export default {
 
 <style scoped>
 .split-loaded {
+  margin-top: 15px;
   padding: 1.5rem;
   background: #fffbcc;
   border: 2px dashed #f5a623;
