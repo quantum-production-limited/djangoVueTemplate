@@ -6,6 +6,7 @@ This example project demonstrates how to integrate a Vue application into a Djan
 - Python: 3.12.11
 - Node: v22.11.0
 - NPM: 11.2.0
+- Django (with django.contrib.staticfiles)
 
 ## Installation
 
@@ -20,17 +21,59 @@ This guide covers three main aspects of integrating a Vue application with Djang
 2) Placing built Vue static files in a location Django can find
 3) Passing data from Django's views into the Vue application
 
+### Installation
+
+1. Clone this repo and cd into your Django project root.
+2. Install Python dependencies (requires Python virtual environment)
+```
+pip install -r requirements.txt
+```
+3. Install Vue dependencies (requires Node)
+```
+cd my_django_app/example_vue_app
+npm install
+```
+4. Run NPM in DEV mode:
+```
+cd my_django_app/example_vue_app
+npm run serve
+```
+5. Start Django server:
+```
+python manage.py runserver
+```
+6. Click on your dev server URL (http://127.0.0.1:8000 by default)
+
 ### 1) Setting up the Django template
 Vue needs an empty `<div>` element to mount to, and then we need to load in the Vue stylesheet and JavaScript files.
 This means the bare minimum HTML body looks something like this:
 ```html
+    {% load static vueassets %}
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <title>Example Vue App</title>
+    
+      {# CSS #}
+      <link
+        rel="stylesheet"
+        href="{% vue_asset 'css/app.css' %}"
+      >
+    </head>
     <body>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'example_vue_app/css/app.css' %}">
-    <div id="example_vue_app_container"></div>
-    <script src="{% static 'example_vue_app/js/app.js' %}"></script>
-    <script src="{% static 'example_vue_app/js/chunk-vendors.js' %}"></script>
+      {# Mount point #}
+      <div id="example_vue_app_container"></div>
+    
+      {# Pass initial props from Django #}
+      {{ example_vue_app_props|json_script:"example_vue_app_props" }}
+    
+      {# JS bundles (vendor first) #}
+      <script src="{% vue_asset 'js/chunk-vendors.js' %}"></script>
+      <script src="{% vue_asset 'js/app.js' %}"></script>
     </body>
+    </html>
 ```
 
 With those few lines, you can get a Vue application to run within a Django template. You can of course add any other

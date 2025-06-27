@@ -7,8 +7,6 @@
 </head>
 <body>
 {% load static vue_assets %}
-{% clear_vue_manifest_cache %}
-
 <link rel="stylesheet" href="{% vue_asset 'app.css' %}">
 <div id="example_vue_app_container"></div>
 {{ example_vue_app_props|json_script:"example_vue_app_props" }}

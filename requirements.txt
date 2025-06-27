@@ -1,3 +1,5 @@
 asgiref==3.8.1
 Django==5.2.3
+ruff==0.12.0 # Optional: Formatting
 sqlparse==0.5.3
+whitenoise==6.9.0 # Optional: For checking if production-ready files are served
