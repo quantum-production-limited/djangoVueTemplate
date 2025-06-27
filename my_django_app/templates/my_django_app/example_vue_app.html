@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Example Vue App</title>
+    {% load static %}
+    <link rel="icon" type="image/png" href="{% static 'favicon.png' %}">
 </head>
 <body>
 {% load static vue_assets %}
@@ -12,4 +14,12 @@
 {{ example_vue_app_props|json_script:"example_vue_app_props" }}
 <script src="{% vue_asset 'js/chunk-vendors.js' %}"></script>
 <script src="{% vue_asset 'js/app.js' %}"></script>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: none;
+        font-family: inherit;
+    }
+</style>
 </body>
