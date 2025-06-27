@@ -1,10 +1,11 @@
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 const path = require('path');
 
 module.exports = {
     publicPath: '/static/example_vue_app/', // Should be STATIC_URL + path/to/build
     outputDir: path.resolve(__dirname, '../static/example_vue_app/'), // Output to a directory in STATICFILES_DIRS
-    filenameHashing: true, // Django will hash file names, not webpack
+    filenameHashing: true, // Keep this true for cache busting
     runtimeCompiler: true, // See: https://vuejs.org/v2/guide/installation.html#Runtime-Compiler-vs-Runtime-only
     devServer: {
       devMiddleware: {
@@ -15,6 +16,11 @@ module.exports = {
     configureWebpack: {
         plugins: [
             new CleanWebpackPlugin(),
+            new WebpackManifestPlugin({
+                fileName: 'asset-manifest.json',
+                publicPath: '/static/example_vue_app/',
+                writeToFileEmit: true
+            })
         ]
     }
 };

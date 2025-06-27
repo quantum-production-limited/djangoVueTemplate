@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,11 +6,12 @@
     <title>Example Vue App</title>
 </head>
 <body>
-{% load static %}
-<link rel="stylesheet" href="{% static 'example_vue_app/css/app.css' %}">
+{% load static vue_assets %}
+{% clear_vue_manifest_cache %}
+
+<link rel="stylesheet" href="{% vue_asset 'app.css' %}">
 <div id="example_vue_app_container"></div>
 {{ example_vue_app_props|json_script:"example_vue_app_props" }}
-<script src="{% static 'example_vue_app/js/app.js' %}"></script>
-<script src="{% static 'example_vue_app/js/chunk-vendors.js' %}"></script>
+<script src="{% vue_asset 'js/chunk-vendors.js' %}"></script>
+<script src="{% vue_asset 'js/app.js' %}"></script>
 </body>
-</html>
